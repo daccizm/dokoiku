@@ -1,4 +1,7 @@
 Dokoiku::Application.routes.draw do
+
+  root :to => 'top#index'
+
   get "top/index"
 
   # The priority is based upon order of creation:
