@@ -49,7 +49,6 @@ GEM
     factory_girl_rails (4.2.1)
       factory_girl (~> 4.2.0)
       railties (>= 3.0.0)
-    flat-ui-rails (0.0.2)
     heroku (2.39.2)
       heroku-api (~> 0.3.7)
       launchy (>= 0.3.2)
@@ -156,7 +155,6 @@ PLATFORMS
 DEPENDENCIES
   coffee-rails (~> 3.2.1)
   factory_girl_rails
-  flat-ui-rails
   heroku
   jquery-rails
   less-rails
