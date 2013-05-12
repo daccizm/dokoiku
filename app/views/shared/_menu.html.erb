@@ -1,24 +1,22 @@
-<a href="#modal-logout" data-toggle="modal" class="label bc">
+<a href="#modal-category" data-toggle="modal" class="label bc">
   <span class="">ジャンルを選択します</span>
   <span class="icon-circle-arrow-down"></span>
 </a>
 
-<div id="modal-logout" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mdl_header_demand" aria-hidden="true">
+<div id="modal-category" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mdl_header_demand" aria-hidden="true">
   <div class="modal-header">
   	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="mdl_header_demand">ジャンルを選択します</h3>
   </div>
   <div class="modal-body">
-	<a href="#modal-logoutX" data-toggle="modal" class="label bc">全て</a>
-	<a href="#modal-logout2" data-toggle="modal" class="label bc">グルメ</a>
-	<a href="#modal-logoutX" data-toggle="modal" class="label bc">美容・健康</a>
-	<a href="#modal-logoutX" data-toggle="modal" class="label bc">遊ぶ・趣味</a>
-	<a href="#modal-logoutX" data-toggle="modal" class="label bc">宿泊・ホテル</a>
-	<a href="#modal-logoutX" data-toggle="modal" class="label bc">ショッピング</a>
+	<a href="#modal-genresX" data-toggle="modal" class="label bc">全て</a>
+    <% @categories.each do |category| %>
+  	  <a href="#modal-genres<%= category.id %>" data-toggle="modal" class="label bc"><%= category.name %></a>
+    <% end %>
   </div>
 </div>
 
-<div id="modal-logout2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mdl_header_demand" aria-hidden="true">
+<div id="modal-genres2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mdl_header_demand" aria-hidden="true">
   <div class="modal-header">
   	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="mdl_header_demand">グルメ</h3>
