@@ -9,13 +9,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 category = Category.where(name: 'グルメ').first
-unless category
-  category = Category.create( name: 'グルメ' )
-  # category.genres.create( name: 'ラーメン・中華' )
-  # category.genres.create( name: '居酒屋' )
-  # category.genres.create( name: '和食' )
-  # category.genres.create( name: '洋食' )
-end
+category = Category.create( name: 'グルメ' ) unless category
+category.genres.create( name: 'ラーメン・中華' ) unless Genre.where(name: 'ラーメン・中華').first
+category.genres.create( name: '居酒屋' ) unless Genre.where(name: '居酒屋').first
+category.genres.create( name: '和食' ) unless Genre.where(name: '和食').first
+category.genres.create( name: '洋食' ) unless Genre.where(name: '洋食').first
 
 category = Category.where(name: '美容・健康').first
 unless category

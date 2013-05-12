@@ -16,16 +16,17 @@
   </div>
 </div>
 
-<div id="modal-genres2" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mdl_header_demand" aria-hidden="true">
-  <div class="modal-header">
-  	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="mdl_header_demand">グルメ</h3>
-  </div>
-  <div class="modal-body">
-  	<p>全て</p>
-  	<p>ラーメン・中華</p>
-  	<p>居酒屋</p>
-  	<p>和食</p>
-  	<p>洋食</p>
-  </div>
-</div>
+<% @categories.each do |category| %>
+	<div id="modal-genres<%= category.id %>" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mdl_header_demand" aria-hidden="true">
+	  <div class="modal-header">
+	  	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h3 id="mdl_header_demand"><%= category.name %></h3>
+	  </div>
+	  <div class="modal-body">
+        <a class="label bc">全て</a>
+	    <% category.genres.each do |genre| %>
+	  	  <a class="label bc"><%= genre.name %></a>
+	    <% end %>
+	  </div>
+	</div>
+<% end %>
