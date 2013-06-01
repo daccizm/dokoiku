@@ -1,0 +1,5 @@
+$("#shops_list").html("<%=j render 'shops/list' %>");
+// $("#link-modal-genre-name").text("<%= @shops.first %>");
+$("span#link-modal-genre-name").text("<%=j @shops.first.genre.name %>");
+$("[id^='modal-genres']").modal("hide");
+$("#modal-category").modal("hide");

@@ -46,18 +46,25 @@
 
     <div class="container">
         <div class="row">
-          <div class="span3">
-            <%= render partial: 'shared/menu' %>
-          </div>
           <div class="span9">
             <%= bootstrap_flash %>
             <%= yield %>
           </div>
+          <div class="span3">
+            <%= render partial: 'shared/menu' %>
+          </div>
+        </div><!--/row-->
+        <div class="row">
+          <div class="span12" style="padding-top:30px">
+            <div id="shops_list"></div>
+          </div>
         </div><!--/row-->
 
-      <footer>
+      <!--
+      <footer style="position:absolute;bottom:0px;">
         <p>Dokoiku &copy; 2013</p>
       </footer>
+      -->
 
     </div> <!-- /container -->
 

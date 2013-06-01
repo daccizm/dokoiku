@@ -3,6 +3,7 @@ Dokoiku::Application.routes.draw do
   root :to => 'top#index'
 
   get "top/index"
+  resources :shops
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

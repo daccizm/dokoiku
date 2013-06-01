@@ -8,12 +8,20 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-category = Category.where(name: 'グルメ').first
-category = Category.create( name: 'グルメ' ) unless category
-category.genres.create( name: 'ラーメン・中華' ) unless Genre.where(name: 'ラーメン・中華').first
-category.genres.create( name: '居酒屋' ) unless Genre.where(name: '居酒屋').first
-category.genres.create( name: '和食' ) unless Genre.where(name: '和食').first
-category.genres.create( name: '洋食' ) unless Genre.where(name: '洋食').first
+Category.delete_all
+Genre.delete_all
+Shop.delete_all
+
+category = Category.create( name: 'グルメ' )
+genre = category.genres.create( name: 'ラーメン・中華' )
+category.genres.create( name: '居酒屋' )
+category.genres.create( name: '和食' )
+category.genres.create( name: '洋食' )
+
+genre.shops.create( name: 'らー麺　塩や', tel: '0852-26-7020', fax: '' )
+genre.shops.create( name: 'ひばり', tel: '0852-21-5062', fax: '' )
+
+
 
 category = Category.where(name: '美容・健康').first
 unless category
