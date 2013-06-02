@@ -98,17 +98,14 @@
     <h3 id="mdl_header_demand">空席情報</h3>
   </div>
   <div class="modal-body">
-    <%= select_year DateTime.now, :start_year => Date.today.year %>年
+    <%= select_year DateTime.now, {}, {:start_year => Date.today.year, :style => "width:70px"} %>/
+    <%= select_month DateTime.now, {:use_month_numbers => true}, {:style => "width:55px"} %>/
+    <%= select_day DateTime.now, {}, {:style => "width:55px"} %>
     <br/>
-    <%= select_month DateTime.now, :use_month_numbers => true %>月
+    <%= select_hour DateTime.now, {}, {:style => "width:55px"} %>:
+    <%= select_minute DateTime.now, {:minute_step => 15}, {:style => "width:55px"} %>
     <br/>
-    <%= select_day DateTime.now %>日
-    <br/>
-    <%= select_hour DateTime.now %>時
-    <br/>
-    <%= select_minute DateTime.now, :minute_step => 15 %>分
-    <br/>
-    <select id="seat_number">
+    <select id="seat_number" style="width:55px">
       <% (1..40).each do |number| %>
         <option value="<%= number %>"><%= number %></option>
       <% end %>
