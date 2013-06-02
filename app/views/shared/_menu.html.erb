@@ -4,38 +4,34 @@
   <button type="submit" class="btn">検索</button>
 </div>
 
+
+
 <div style="padding-top:30px">
-  <a class="label bc" style="width:230px">
-    <span>リアルタイムニュース</span>
-    <span class="icon-circle-arrow-down"></span>
-  </a>
-</div>
-
-<div style="padding-top:10px">
-  <a class="label bc" style="width:230px">
-    <span>現在地から探します</span>
-    <span class="icon-circle-arrow-down"></span>
-  </a>
-</div>
-
-<div style="padding-top:10px">
   <a href="#modal-category" data-toggle="modal" class="label bc" style="width:230px">
-    <span id="link-modal-genre-name">ジャンルを選択します</span>
-    <span class="icon-circle-arrow-down"></span>
+    <span id="link-modal-category-name">ジャンルを選ぶ</span>
+    <span class="icon-circle-arrow-down" style="float:right"></span>
   </a>
 </div>
 
 <div id="modal-category" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mdl_header_demand" aria-hidden="true">
   <div class="modal-header">
   	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="mdl_header_demand">ジャンルを選択します</h3>
+    <h3 id="mdl_header_demand">ジャンル</h3>
   </div>
   <div class="modal-body">
-	<a href="#modal-genresX" data-toggle="modal" class="label bc">全て</a>
     <% @categories.each do |category| %>
-  	  <a href="#modal-genres<%= category.id %>" data-toggle="modal" class="label bc"><%= category.name %></a>
+      <a href="#" genre-id="<%= category.id %>" class="a_line"><%= category.name %></a>
     <% end %>
   </div>
+</div>
+
+
+
+<div id="modal-genre" style="padding-top:10px">
+  <a id="a-modal-genre" href="" data-toggle="modal" class="label bc" style="width:230px">
+    <span id="link-modal-genre-name">詳しく選ぶ</span>
+    <span class="icon-circle-arrow-down" style="float:right"></span>
+  </a>
 </div>
 
 <% @categories.each do |category| %>
@@ -45,10 +41,85 @@
 	    <h3 id="mdl_header_demand"><%= category.name %></h3>
 	  </div>
 	  <div class="modal-body">
-        <a class="label bc">全て</a>
+      <a class="a_line">全て</a>
 	    <% category.genres.each do |genre| %>
-          <%= link_to genre.name, shops_path, method: :get, remote: true, :class => 'label bc' %>
+        <a href="#" class="a_line"><%= genre.name %></a>
 	    <% end %>
 	  </div>
 	</div>
 <% end %>
+
+
+
+<div style="padding-top:10px">
+  <a href="#modal-location" data-toggle="modal" class="label bc" style="width:230px">
+    <span id="link-modal-location-name">場所を選ぶ</span>
+    <span class="icon-circle-arrow-down" style="float:right"></span>
+  </a>
+</div>
+
+<div id="modal-location" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mdl_header_demand" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="mdl_header_demand">場所</h3>
+  </div>
+  <div class="modal-body">
+    <a class="a_line">現在地から探すGPS</a>
+    <a class="a_line">橋北地区</a>
+    <a class="a_line">橋南地区</a>
+  </div>
+</div>
+
+
+
+<div style="padding-top:10px">
+  <a href="#modal-situation" data-toggle="modal" class="label bc" style="width:230px;">
+    <span id="link-modal-situation-name">掲載店一覧</span>
+    <span class="icon-circle-arrow-down" style="float:right"></span>
+  </a>
+</div>
+
+<div id="modal-situation" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mdl_header_demand" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="mdl_header_demand">ニュース／空席情報</h3>
+  </div>
+  <div class="modal-body">
+    <a class="a_line">掲載店一覧</a>
+    <a class="a_line">最新のニュース</a>
+    <a class="a_line">今月のニュース</a>
+    <a href="#modal-situation-seat" data-toggle="modal" class="a_line">空席情報</a>
+  </div>
+</div>
+
+<div id="modal-situation-seat" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="mdl_header_demand" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="mdl_header_demand">空席情報</h3>
+  </div>
+  <div class="modal-body">
+    <%= select_year DateTime.now, :start_year => Date.today.year %>年
+    <br/>
+    <%= select_month DateTime.now, :use_month_numbers => true %>月
+    <br/>
+    <%= select_day DateTime.now %>日
+    <br/>
+    <%= select_hour DateTime.now %>時
+    <br/>
+    <%= select_minute DateTime.now, :minute_step => 15 %>分
+    <br/>
+    <select id="seat_number">
+      <% (1..40).each do |number| %>
+        <option value="<%= number %>"><%= number %></option>
+      <% end %>
+    </select>人
+    <br/>
+    <a class="label bc">確定</a>
+  </div>
+</div>
+
+
+
+<div style="padding-top:30px">
+  <%= link_to "GO", shops_path, method: :get, remote: true, :class => 'label search', :align => "center" %>
+</div>
