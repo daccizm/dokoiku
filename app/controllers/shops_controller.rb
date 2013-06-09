@@ -1,10 +1,14 @@
 class ShopsController < ApplicationController
   def index
-    # genre = Genre.find()
-    # @shops = genre.shops
+
     @shops = Shop.find(:all)
+    
     respond_to do |format|
-      format.js   { render action: "list.js.erb" }
+      if params[:menu][:situation] == "1" || params[:menu][:situation] == "4"
+        format.js   { render action: "list.js.erb" }
+      else
+        format.js   { render action: "news.js.erb" }
+      end
     end
   end
 

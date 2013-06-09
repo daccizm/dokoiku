@@ -37,6 +37,7 @@ $(document).ready( function() {
   $("div#modal-situation a").click(function(){
     $("span#link-modal-situation-name").text($(this).text());
     $("#modal-situation").modal("hide");
+    $("#menu_situation").val($(this).attr('kind'));
   });
 
   $("div#modal-situation-seat a").click(function(){
@@ -54,6 +55,10 @@ $(document).ready( function() {
     $("#link-modal-situation-name").append(name);
 
     $("#modal-situation-seat").modal("hide");
+  });
+
+  $("#a-menu-search").click(function(){
+    $('#frm-menu').submit();
   });
 
 });

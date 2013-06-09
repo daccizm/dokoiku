@@ -18,10 +18,12 @@ category.genres.create( name: '居酒屋' )
 category.genres.create( name: '和食' )
 category.genres.create( name: '洋食' )
 
-genre.shops.create( name: 'らー麺　塩や', tel: '0852-26-7020', fax: '' )
-genre.shops.create( name: 'ひばり', tel: '0852-21-5062', fax: '' )
+shop1 = genre.shops.create( name: 'らー麺　塩や', tel: '0852-26-7020', fax: '' )
+shop2 = genre.shops.create( name: 'ひばり', tel: '0852-21-5062', fax: '' )
 
-
+shop1.notices.create( content: '○○○タイムセールス中！' )
+shop1.notices.create( content: '△△△タイムセールス中！' )
+shop2.notices.create( content: '□□□タイムセールス中！' )
 
 category = Category.where(name: '美容・健康').first
 unless category

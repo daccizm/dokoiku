@@ -1,3 +1,5 @@
+<%= form_tag(url_for(:controller => 'shops', :action => 'index'), :method => :get, :remote => true, :id => 'frm-menu') do %>
+
 <div style="padding-top:30px">
   <p>フリーワード検索</p>
   <input type="text" class="input-medium search-query">
@@ -20,7 +22,7 @@
   </div>
   <div class="modal-body">
     <% @categories.each do |category| %>
-      <a href="#" genre-id="<%= category.id %>" class="a_line"><%= category.name %></a>
+      <a genre-id="<%= category.id %>" class="a_line"><%= category.name %></a>
     <% end %>
   </div>
 </div>
@@ -43,7 +45,7 @@
 	  <div class="modal-body">
       <a class="a_line">全て</a>
 	    <% category.genres.each do |genre| %>
-        <a href="#" class="a_line"><%= genre.name %></a>
+        <a class="a_line"><%= genre.name %></a>
 	    <% end %>
 	  </div>
 	</div>
@@ -85,10 +87,10 @@
     <h3 id="mdl_header_demand">ニュース／空席情報</h3>
   </div>
   <div class="modal-body">
-    <a class="a_line">掲載店一覧</a>
-    <a class="a_line">最新のニュース</a>
-    <a class="a_line">今月のニュース</a>
-    <a href="#modal-situation-seat" data-toggle="modal" class="a_line">空席情報</a>
+    <a class="a_line" kind="1" >掲載店一覧</a>
+    <a class="a_line" kind="2" >最新のニュース</a>
+    <a class="a_line" kind="3" >今月のニュース</a>
+    <a class="a_line" kind="4" href="#modal-situation-seat" data-toggle="modal" >空席情報</a>
   </div>
 </div>
 
@@ -115,8 +117,10 @@
   </div>
 </div>
 
-
-
 <div style="padding-top:30px">
-  <%= link_to "GO", shops_path, method: :get, remote: true, :class => 'label search', :align => "center" %>
+  <a id="a-menu-search" class="label search" align="center" >GO</a>
 </div>
+
+<%= hidden_field_tag 'menu[situation]', "1" %>
+
+<% end %>
