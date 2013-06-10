@@ -48,16 +48,10 @@
     <!-- <div class="container pagination-centered"> -->
     <div class="container">
         <div class="row">
-          <div class="span9">
+          <div class="span8 offset2">
             <%= bootstrap_flash %>
             <%= yield %>
-          </div>
-          <div class="span3">
             <%= render partial: 'shared/menu' %>
-          </div>
-        </div><!--/row-->
-        <div class="row">
-          <div class="span12" style="padding-top:30px">
             <div id="shops_list"></div>
           </div>
         </div><!--/row-->
